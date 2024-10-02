@@ -1,0 +1,4 @@
+[
+    { "id": 1, "title": "Harry Potter and the Sorcerer's Stone", "author_id": 1, "published_year": 1997 },
+    { "id": 2, "title": "The Lord of the Rings: The Fellowship of the Ring", "author_id": 2, "published_year": 1954 }
+]
