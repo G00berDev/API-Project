@@ -1,0 +1,6 @@
+{
+    "id": 1,
+    "name": "Tim Robbins",
+    "birthdate": "1958-07-16",
+    "movies": [1, 3]
+}
