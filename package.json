@@ -12,5 +12,8 @@
   },
   "devDependencies": {
     "nodemon": "^2.11.0"
-  }
+  },
+  "keywords": [],
+  "author": "stryder bateman <sbateman716@west-mec.org>",
+  "license": "MIT"
 }

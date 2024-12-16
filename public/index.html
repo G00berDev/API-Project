@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Books API</title>
+</head>
+<body>
+<h1>Books List</h1>
+<ul id="books-list"></ul>
+
+<h2>Add a New Book</h2>
+<form id="add-book-form">
+<input type="text" id="book-title" placeholder="Book Title" required>
+<button type="submit">Add Book</button>
+</form>
+
+<script>
+// Fetch all books from the backend
+async function fetchBooks() {
+    const response = await fetch('http://localhost:3172/books');
+    const books = await response.json();
+    const booksList = document.getElementById('books-list');
+    booksList.innerHTML = ''; // Clear the list
+
+    books.forEach(book => {
+    const li = document.createElement('li');
+    li.textContent = `ID: ${book.id}, Title: ${book.title}`;
+    booksList.appendChild(li);
+    });
+}
+
+// Submit new book form
+document.getElementById('add-book-form').addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const title = document.getElementById('book-title').value;
+
+    const newBook = {
+    title: title
+    };
+
+    const response = await fetch('http://localhost:3172/books', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(newBook)
+    });
+
+    const result = await response.json();
+    alert(`New book added: ${result.title}`);
+    fetchBooks(); // Refresh the list of books
+});
+
+// Load books on page load
+fetchBooks();
+</script>
+</body>
+</html>
